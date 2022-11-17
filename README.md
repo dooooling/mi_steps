@@ -32,9 +32,9 @@
 
 ##### 最大步数生成方式
     if 当前小时 < FULL_TIME{
-        最大步数 = 当前小时/FULL_TIME * MAX_STEPS
+        同步步数 = 当前小时/FULL_TIME * MAX_STEPS
     }else{
-        最大步数
+        同步步数 = MAX_STEPS
     }
 
 #### 五、同步时间
