@@ -476,6 +476,7 @@ dependencies = [
  "lazy_static",
  "regex",
  "reqwest",
+ "serde_json",
  "tokio",
 ]
 
