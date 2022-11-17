@@ -1,0 +1,15 @@
+[package]
+name = "mi_steps"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+reqwest = { version = "0.11", features = ["blocking", "json"] }
+tokio = { version = "1", features = ["full"] }
+lazy_static = "1.4.0"
+regex = "1.7.0"
+serde_json = "1.0"
+chrono = "0.4.23"
+rand = "0.8.5"

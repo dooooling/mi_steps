@@ -1,0 +1,32 @@
+name: Rust
+
+on:
+  schedule:
+    - cron: '10 1,4,7,9 * * *'
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set time zone
+        uses: szenius/set-timezone@v1.0 #设置时区
+        with:
+          timezoneLinux: "Asia/Shanghai"
+      - name: Run
+        uses: actions-rs/cargo@v1
+        with:
+          command: run
+        env:
+          ACCOUNTS: ${{ secrets.ACCOUNT }}
+          BARK_SERVER: ${{ secrets.BARK_SERVER }}
+          BARK_KEY: ${{ secrets.BARK_KEY }}
+          FULL_TIME: ${{ secrets.FULL_TIME }}
+          MAX_STEPS: ${{ secrets.MAX_STEPS }}
