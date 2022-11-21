@@ -2,7 +2,7 @@
 mod mods;
 
 use std::env;
-use chrono::{Datelike, Local, Timelike, TimeZone, Utc};
+use chrono::{Datelike, Local, TimeZone};
 use crate::mods::bark::{Bark, BarkMessage};
 
 #[tokio::main]
