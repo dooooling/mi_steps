@@ -2,7 +2,7 @@
 mod mods;
 
 use std::env;
-use chrono::Timelike;
+use chrono::{Datelike, Local, Timelike, TimeZone, Utc};
 use crate::mods::bark::{Bark, BarkMessage};
 
 #[tokio::main]
@@ -35,9 +35,13 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 
 fn gen_steps(full_time: u32, max_steps: u32) -> u32 {
-    let hour = chrono::Local::now().hour();
-    return if hour < full_time {
-        let rate = hour as f64 / full_time as f64;
+    let now = chrono::Local::now();
+    let mut millis = now.timestamp_millis();
+    millis = millis - Local.with_ymd_and_hms(now.year(), now.month(), now.day(), 0, 0, 0).unwrap().timestamp_millis();
+    let all_millis = full_time * 3600000;
+
+    return if millis < all_millis as i64 {
+        let rate = millis as f64 / all_millis as f64;
         let step = rate * max_steps as f64;
         step as u32
     } else { max_steps };
