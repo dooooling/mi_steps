@@ -150,6 +150,7 @@ fn get_code(location: &str) -> Result<String, Box<dyn Error>> {
     let option = parse.find(|(key, _)| {
         key.eq("access")
     });
+    print!("---- {:?}",&location);
     if let Some((_, val)) = option {
         Ok(val.to_string())
     } else {
